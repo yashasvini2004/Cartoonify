@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartoonify</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: url('/static/download.png') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: flex-start; /* Align items to the top */
+            justify-content: flex-start; /* Align items to the left */
+        }
+        .container {
+            text-align: center;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px; /* Add margin for spacing from the edges */
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        .btn {
+            font-size: 1.5em;
+            padding: 10px 20px;
+        }
+        input[type="file"] {
+            display: block;
+            margin: 20px auto;
+        }
+        .img-container {
+            margin-top: 20px;
+        }
+        .img-container img {
+            max-width: 100%;
+            height: auto;
+            border: 5px solid white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cartoonify</h1>
+        <form action="/" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" id="file" class="btn btn-light">
+            <input type="submit" value="Upload Image" class="btn btn-primary">
+        </form>
+        <div class="img-container">
+            {% if filename %}
+                <h2>Cartoonified Image</h2>
+                <img src="{{ url_for('uploaded_file', filename=filename) }}" alt="Cartoonified Image">
+            {% endif %}
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
